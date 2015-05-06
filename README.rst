@@ -7,7 +7,7 @@ A helper library to simplify the process of storing and retrieving images from t
 Helper methods
 --------------
 
-`frame.models.FrameImage`
+`frame.FrameImage`
 
 A class that simplifies the process of storing and manipulating images in Frame
 
@@ -19,7 +19,7 @@ A key string must be provided when initializing a FrameImage instance. This is t
 
 Returns an absolute url for the image. Optional arguments, such as `width`, `height`, and `quality` may be passed to the method.
 
-- `FrameImage.from_file(file_instance)`
+- `FrameImage.from_file(file_instance, frame_url=None)`
 
 Static method takes a `file` instance and uploads it to frame, then returns an instance for the uploaded image.
 

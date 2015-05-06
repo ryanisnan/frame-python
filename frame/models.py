@@ -1,26 +1,7 @@
 from django.db.models import Field
 from django.db.models import SubfieldBase
-from django.conf import settings
 from frame.forms import FrameFileField
-from frame.utils import upload
-import urllib
-
-class FrameImage(object):
-    def __init__(self, key):
-        self.key = key
-
-    def build_url(self, **kwargs):
-        url = '%s/image/%s' % (settings.FRAME_URL, self.key)
-        if kwargs:
-            options = urllib.urlencode(kwargs)
-            url += '?%s' % options
-        return url
-
-    @staticmethod
-    def from_file(file_instance):
-        key = upload(file_instance)
-        return FrameImage(key)
-
+from frame import FrameImage
 
 class FrameField(Field):
     __metaclass__ = SubfieldBase
