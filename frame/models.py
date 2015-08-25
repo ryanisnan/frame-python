@@ -4,6 +4,7 @@ from django.db.models import SubfieldBase
 from django.forms.fields import FileField
 from frame import FrameImage
 
+
 class FrameField(Field):
     __metaclass__ = SubfieldBase
 
@@ -13,7 +14,7 @@ class FrameField(Field):
 
     def get_internal_type(self):
         return 'CharField'
-    
+
     def to_python(self, value):
         if isinstance(value, FrameImage):
             return value
@@ -39,5 +40,6 @@ class FrameField(Field):
         else:
             return value
 
-    def formfield(self, form_class=FileField, **kwargs):
-        return super(FrameField, self).formfield(form_class, **kwargs)
+    def formfield(self, **kwargs):
+        kwargs['form_class'] = FileField
+        return super(FrameField, self).formfield(**kwargs)
